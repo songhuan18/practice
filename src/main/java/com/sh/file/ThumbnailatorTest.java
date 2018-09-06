@@ -1,10 +1,7 @@
-package com.yg.file;
+package com.sh.file;
 
 import net.coobird.thumbnailator.Thumbnails;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class ThumbnailatorTest {

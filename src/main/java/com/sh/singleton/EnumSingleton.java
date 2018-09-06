@@ -1,4 +1,4 @@
-package com.yg.singleton;
+package com.sh.singleton;
 
 /**
  * 枚举单例
