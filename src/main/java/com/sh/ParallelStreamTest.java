@@ -3,7 +3,10 @@ package com.sh;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
+/**
+ * parallelStream和Stream遍历性能对比
+ */
+public class ParallelStreamTest {
 
     private static final int COUNT = 1000000;
 
@@ -29,7 +32,7 @@ public class Test {
         long end2 = System.currentTimeMillis();
         System.out.println("耗时：" + (end2 - start2) + "ms");
         long start3 = System.currentTimeMillis();
-        list.stream().forEach(n -> {
+        list.forEach(n -> {
             if (n.equals(COUNT - 1)) {
                 System.out.println("stream遍历完成");
             }
