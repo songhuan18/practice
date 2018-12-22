@@ -45,6 +45,21 @@
             <artifactId>gexin-rp-sdk-http</artifactId>
             <version>4.0.1.17</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>

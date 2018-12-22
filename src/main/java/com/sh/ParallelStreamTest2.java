@@ -2,6 +2,7 @@ package com.sh;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * ParallelStream 如何造成线程不安全
