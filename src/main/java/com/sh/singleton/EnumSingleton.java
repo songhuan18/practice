@@ -5,6 +5,10 @@ package com.sh.singleton;
  */
 public class EnumSingleton {
 
+    private EnumSingleton() {
+        System.out.println(Thread.currentThread().getName() + " 我是构造方法");
+    }
+
     public static EnumSingleton getInstance() {
         return Singleton.INSTANCE.getEnumSingleton();
     }
@@ -19,6 +23,7 @@ public class EnumSingleton {
         }
 
         public EnumSingleton getEnumSingleton() {
+            System.out.println("调用了");
             return enumSingleton;
         }
     }

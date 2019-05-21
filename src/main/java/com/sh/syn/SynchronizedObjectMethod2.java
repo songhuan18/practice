@@ -10,8 +10,8 @@ public class SynchronizedObjectMethod2 implements Runnable {
 
     public static void main(String[] args) {
         Thread t1 = new Thread(instance);
-        Thread t2 = new Thread(instance);
-//        Thread t2 = new Thread(instance2); # synchronized是无法锁住的
+//        Thread t2 = new Thread(instance);
+        Thread t2 = new Thread(instance2); // synchronized是无法锁住的
         t1.start();
         t2.start();
         while (t1.isAlive() || t2.isAlive()) {
