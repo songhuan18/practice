@@ -28,9 +28,10 @@ public class SemaphoreTest {
 
                     // 归还一个许可，后边的就可以进来购买了
                     System.out.println("顾客" + finalI + "购买完毕了...");
-                    semaphore.release();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                } finally {
+                    semaphore.release();
                 }
             });
         }
