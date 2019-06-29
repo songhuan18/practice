@@ -32,7 +32,7 @@ class ShareData {
     public void increment() {
         lock.lock();
         try {
-            while (number != 0) {
+            while (number != 0) {// 如果用if判断可能出现虚假唤醒，所以最好是用while判断
                 condition.await();
             }
             System.out.println(Thread.currentThread().getName() + "\t" + number);

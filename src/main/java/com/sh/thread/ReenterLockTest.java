@@ -1,5 +1,7 @@
 package com.sh.thread;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 public class ReenterLockTest {
 }
 
@@ -14,6 +16,7 @@ class Phone {
     }
 
     public static void main(String[] args) {
+        ReentrantLock lock = new ReentrantLock();
         Phone phone = new Phone();
         new Thread(() -> {
             phone.sendMes();
