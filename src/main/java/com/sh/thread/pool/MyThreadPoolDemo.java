@@ -15,25 +15,26 @@ import java.util.concurrent.*;
  */
 public class MyThreadPoolDemo {
     public static void main(String[] args) {
-        ExecutorService threadPool = new ThreadPoolExecutor(
-                2,
-                5,
-                1L,
-                TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(3),
-                Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.AbortPolicy());
-        try {
-            for (int i = 0; i < 8; i++) {
-                threadPool.execute(() -> {
-                    System.out.println(Thread.currentThread().getName() + "\t 办理业务");
-                });
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            threadPool.shutdown();
-        }
+//        ExecutorService threadPool = new ThreadPoolExecutor(
+//                2,
+//                5,
+//                1L,
+//                TimeUnit.SECONDS,
+//                new LinkedBlockingQueue<>(3),
+//                Executors.defaultThreadFactory(),
+//                new ThreadPoolExecutor.AbortPolicy());
+//        try {
+//            for (int i = 0; i < 8; i++) {
+//                threadPool.execute(() -> {
+//                    System.out.println(Thread.currentThread().getName() + "\t 办理业务");
+//                });
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            threadPool.shutdown();
+//        }
+        threadPoolInit();
     }
 
     private static void threadPoolInit() {
@@ -41,12 +42,13 @@ public class MyThreadPoolDemo {
 //        ExecutorService threadPool = Executors.newSingleThreadExecutor();//创建一个线程，一池1个线程，一个任务一个任务执行的场景
 //        ExecutorService threadPool = Executors.newCachedThreadPool();//一池N个线程，执行短期异步的小程序或者负载较轻的任务
 
-        ExecutorService threadPool = new ThreadPoolExecutor(1, 5, 1, TimeUnit.SECONDS, new LinkedBlockingQueue<>(50));
+        ExecutorService threadPool = new ThreadPoolExecutor(1, 100, 1, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
         // 模拟10个用户，每个用户就是一个来自外部的请求线程
         try {
             for (int i = 0; i < 10000; i++) {
+                int temp  = i;
                 threadPool.execute(() -> {
-                    System.out.println(Thread.currentThread().getName() + "\t 办理业务");
+                    System.out.println(Thread.currentThread().getName() + "\t 办理业务 " + temp);
                 });
             }
         } catch (Exception e) {

@@ -2,7 +2,7 @@ package com.sh.singleton;
 
 /**
  * 懒汉式
- * 线程不安全
+ * 双重校验锁
  */
 public class Singleton4 {
 
@@ -16,11 +16,6 @@ public class Singleton4 {
         if (instance == null) {
             synchronized(Singleton4.class) {
                 if (instance == null) {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                     instance = new Singleton4();
                 }
             }
