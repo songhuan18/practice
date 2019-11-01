@@ -1,10 +1,8 @@
 package com.sh.date;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 
 public class DateUtil {
@@ -50,11 +48,52 @@ public class DateUtil {
                 .toLocalDateTime().format(dtf);
     }
 
-    private static LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+    public static LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
         return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    public static void main(String[] args) {
-        System.out.println(convertToLocalDateViaInstant(new Date()));
+    /**
+     * 获取本月最后一天
+     * @return 本月最后一天
+     */
+    public static LocalDate getMonthOfLastDay() {
+//        LocalDateTime localDateTime = LocalDateTime.now().with(TemporalAdjusters.lastDayOfMonth());
+        return LocalDate.now().with(TemporalAdjusters.lastDayOfMonth());
+    }
+
+    /**
+     *  获取本月帝天
+     * @return 本月第一天
+     */
+    public static LocalDate getMonthOfFirstDay() {
+        return LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
+    }
+
+    /**
+     * 两个日期相隔时间（秒）
+     * @param t1 开始时间
+     * @param t2 结束时间
+     * @return
+     */
+    public static long betweenDuration(LocalDateTime t1, LocalDateTime t2) {
+        return Duration.between(t1, t2).getSeconds();
+    }
+
+    /**
+     * 计算两个日期相隔天数
+     * @param t1  开始日期
+     * @param t2 结束日期
+     * @return
+     */
+    public static int betweenDays(LocalDate t1, LocalDate t2) {
+        return Period.between(t1, t2).getDays();
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        LocalDateTime now = LocalDateTime.now();
+        Thread.sleep(1000);
+        LocalDateTime now1 = LocalDateTime.now();
+        System.out.println(betweenDuration(now, now1));
+        int[] arr = new int[]{1, 2, 3, 4, 5};
     }
 }
