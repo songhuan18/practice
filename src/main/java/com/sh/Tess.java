@@ -13,7 +13,7 @@ public class Tess {
     public static void main(String[] args) throws TesseractException {
         Tesseract instance = new Tesseract();
         instance.setLanguage("jpn");
-        File file = new File("/Users/songhuan/Downloads/jpn111.jpeg");
+        File file = new File("/Users/songhuan/Downloads/2.png");
         instance.setDatapath("/usr/local/share/tessdata");
         String result = instance.doOCR(file);
         System.out.println(result);

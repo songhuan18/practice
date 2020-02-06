@@ -14,7 +14,7 @@ import java.util.concurrent.*;
  * 7.handler: 拒绝策略，表示当队列满了并且工作线程大于等于线程池的最大线程数（maximumPoolSize）
  */
 public class MyThreadPoolDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 //        ExecutorService threadPool = new ThreadPoolExecutor(
 //                2,
 //                5,
@@ -34,7 +34,18 @@ public class MyThreadPoolDemo {
 //        } finally {
 //            threadPool.shutdown();
 //        }
-        threadPoolInit();
+//        threadPoolInit();
+
+        PauseThreadPoolExecutor executor = new PauseThreadPoolExecutor(1, 2, 10, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+        for (int i = 0; i < 10; i++) {
+            executor.execute(() -> {
+                System.out.println("thread name is: " + Thread.currentThread().getName());
+            });
+        }
+        System.out.println(executor.getActiveCount());
+        executor.shutdown();
+        System.out.println(executor.isShutdown());
+//        executor.awaitTermination(2, TimeUnit.SECONDS);
     }
 
     private static void threadPoolInit() {
@@ -42,7 +53,7 @@ public class MyThreadPoolDemo {
 //        ExecutorService threadPool = Executors.newSingleThreadExecutor();//创建一个线程，一池1个线程，一个任务一个任务执行的场景
 //        ExecutorService threadPool = Executors.newCachedThreadPool();//一池N个线程，执行短期异步的小程序或者负载较轻的任务
 
-        ExecutorService threadPool = new ThreadPoolExecutor(1, 100, 1, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+        ExecutorService threadPool = new ThreadPoolExecutor(1, 100, 1, TimeUnit.SECONDS, new LinkedBlockingQueue<>(10));
         // 模拟10个用户，每个用户就是一个来自外部的请求线程
         try {
             for (int i = 0; i < 10000; i++) {

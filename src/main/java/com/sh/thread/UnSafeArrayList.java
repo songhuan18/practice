@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class UnSafeArrayList {
+    private static AAA a = new AAA();
     public static void main(String[] args) {
 //        List<String> list = new ArrayList<>();
 //        for (int i = 0; i <= 30; i++) {
@@ -23,5 +24,10 @@ public class UnSafeArrayList {
 //                System.out.println(map.size());
 //            }).start();
 //        }
+        System.out.println("abc".getBytes().length);
     }
+}
+
+class AAA {
+
 }

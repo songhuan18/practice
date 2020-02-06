@@ -8,5 +8,6 @@ public class FinalListTest {
 //        List<String> of = List.of("a", "b");
 //        of.add("c"); // 抛异常
 //        System.out.println(of);
+        System.out.println(12 + (12 >> 1));
     }
 }

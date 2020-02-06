@@ -33,9 +33,9 @@ public class Solution2 {
 
     public static void main(String[] args) {
         String[] banned = new String[] {};
-//        String paragraph = "a, a, a, a, b,b,b,c, c";
+        String paragraph = "a, a, a, a, b,b,b,c, c";
 //        String paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
-        String paragraph = "a.";
+//        String paragraph = "a.";
 //        String paragraph = "Bob";
         String s = mostCommonWord(paragraph, banned);
         System.out.println(s);
