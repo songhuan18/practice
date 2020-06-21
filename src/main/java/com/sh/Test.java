@@ -3,9 +3,7 @@ package com.sh;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.CountDownLatch;
@@ -36,9 +34,26 @@ public class Test {
 //        map.put("b", orDefault);
 //        System.out.println(map);
 
-        Set<String> set = new CopyOnWriteArraySet<>();
-        set.add("a");
-        set.add("a");
+//        Set<String> set = new CopyOnWriteArraySet<>();
+//        set.add("a");
+//        set.add("a");
+
+//        ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
+//        map.computeIfAbsent("1",e->{
+//            map.putIfAbsent("1", "1key");
+//            return "1";
+//        });
+////        map.put("2", "2");
+
+        String str = "bcd";
+        char[] chars = str.toCharArray();
+        List<Character> list = new ArrayList<>();
+        for (int i = 0; i < chars.length; i++) {
+            list.add(chars[i]);
+        }
+        Collections.sort(list);
+        System.out.println(list);
+
     }
 
     private static int connectBlocking() {
