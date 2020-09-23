@@ -18,11 +18,13 @@ class Phone {
     public static void main(String[] args) {
         ReentrantLock lock = new ReentrantLock();
         Phone phone = new Phone();
+        lock.lock();
         new Thread(() -> {
             phone.sendMes();
         }).start();
         new Thread(() -> {
             phone.sendEmail();
         }).start();
+        lock.unlock();
     }
 }

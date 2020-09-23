@@ -21,7 +21,7 @@ public class SimpleCanalClientExample {
 
     public static void main(String args[]) {
         // 创建链接
-        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("hadoop11",
+        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("10.211.55.6",
                 11111), "example", "canal", "canal");
         int batchSize = 1000;
         int emptyCount = 0;
